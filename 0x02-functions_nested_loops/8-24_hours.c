@@ -1,23 +1,19 @@
-#include "main.h"
+#include "holberton.h"
 
 void jack_bauer(void)
 {
-int i, j;
-i = 0;
-while (i < 24)
-{
-j = 0;
-while (j < 60)
-{
-_putchar((i / 10) + '0');
-_putchar((i % 10) + '0');
-_putchar(':');
-_putchar((j / 10) + '0');
-_putchar((j % 10) + '0');
-_putchar('\n');
-j++;
-}
-i++;
-}
-}
+	int h, m;
 
+	for (h = 0; h < 24; h++)
+	{
+		for (m = 0; m < 60; m++)
+		{
+			_putchar((h / 10) + '0');
+			_putchar((h % 10) + '0');
+			_putchar(':');
+			_putchar((m / 10) + '0');
+			_putchar((m % 10) + '0');
+			_putchar('\n');
+		}
+	}
+}
