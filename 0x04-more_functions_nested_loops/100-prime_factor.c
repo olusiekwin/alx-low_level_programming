@@ -2,7 +2,7 @@
 #include "main.h"
 /**
  * main - prints the largest prime factor of 612852475143
- * Bwave ICT / Bright Daniel
+ * olusiekwin
  * Return: always 0
  **/
 
