@@ -1,51 +1,62 @@
 #include "lists.h"
+#include <stdlib.h>
+#include <stdio.h>
 
 /**
-* print_listint_safe - Prints a listint_t linked list safely.
-* @head: Pointer to the start of the list.
-*
-* Return: The number of nodes in the list.
-*/
+ * _realloc_list - reallocates memory for an array of pointers
+ * to the nodes in a linked list
+ * @list: the old list to append
+ * @size: size of the new list (always one more than the old list)
+ * @new_node: new node to add to the list
+ *
+ * Return: pointer to the new list
+ */
+const listint_t **_realloc_list(const listint_t **list, size_t size, const listint_t *new_node)
+{
+    const listint_t **new_list;
+    size_t i;
+
+    new_list = malloc(size * sizeof(listint_t *));
+    if (new_list == NULL)
+    {
+        free(list);
+        exit(98);
+    }
+    for (i = 0; i < size - 1; i++)
+        new_list[i] = list[i];
+    new_list[i] = new_node;
+    free(list);
+    return (new_list);
+}
+
+/**
+ * print_listint_safe - prints a listint_t linked list.
+ * @head: pointer to the start of the list
+ *
+ * Return: the number of nodes in the list
+ */
 size_t print_listint_safe(const listint_t *head)
 {
-size_t count = 0;
-const listint_t *slow = head, *fast = head;
+    size_t count = 0;
+    const listint_t **list = NULL;
 
-while (slow && fast && fast->next)
-{
-printf("[%p] %d\n", (void *)slow, slow->n);
-slow = slow->next;
-fast = fast->next->next;
-count++;
-
-/* Check for a loop */
-if (slow == fast)
-{
-printf("[%p] %d\n", (void *)slow, slow->n);
-count++;
-
-slow = head;
-while (slow != fast)
-{
-printf("[%p] %d\n", (void *)slow, slow->n);
-slow = slow->next;
-fast = fast->next;
-count++;
+    while (head != NULL)
+    {
+        size_t i;
+        for (i = 0; i < count; i++)
+        {
+            if (head == list[i])
+            {
+                printf("-> [%p] %d\n", (void *)head, head->n);
+                free(list);
+                return (count);
+            }
+        }
+        count++;
+        list = _realloc_list(list, count, head);
+        printf("[%p] %d\n", (void *)head, head->n);
+        head = head->next;
+    }
+    free(list);
+    return (count);
 }
-
-printf("-> [%p] %d\n", (void *)slow, slow->n);
-break;
-}
-}
-
-/* Print the remaining nodes, if any */
-while (slow)
-{
-printf("[%p] %d\n", (void *)slow, slow->n);
-slow = slow->next;
-count++;
-}
-
-return (count);
-}
-
