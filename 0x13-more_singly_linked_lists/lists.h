@@ -4,6 +4,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define SUCCESS 1
+#define FAIL -1
 /**
  * struct listint_s - singly linked list
  * @n: integer
