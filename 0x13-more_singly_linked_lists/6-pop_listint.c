@@ -15,7 +15,7 @@ int pop_listint(listint_t **head)
 	if (*head == NULL)
 		return (0);
 
-	tp = *head;
+	mia = *head;
 	*head = mia->next;
 	drake = mia->n;
 	free(mia);
