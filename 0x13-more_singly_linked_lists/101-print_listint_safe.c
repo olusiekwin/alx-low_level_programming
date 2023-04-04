@@ -3,6 +3,16 @@
 #include <stdio.h>
 
 /**
+<<<<<<< HEAD
+* _r - reallocates memory for an array of pointers
+* to the nodes in a linked list
+* @list: the old list to append
+* @size: size of the new list (always one more than the old list)
+* @new: new node being added the list
+*
+* Return: pointer to the new list
+*/
+=======
  * _r - reallocates memory for an array of pointers
  * to the nodes in a linked list
  * @list: the old list to append
@@ -11,25 +21,35 @@
  *
  * Return: pointer to the new list
  */
+>>>>>>> refs/remotes/origin/master
 const listint_t **_r(const listint_t **list, size_t size, const listint_t *new)
 {
-	const listint_t **newlist;
-	size_t i;
+        const listint_t **newlist;
+        size_t i;
 
-	newlist = malloc(size * sizeof(listint_t *));
-	if (newlist == NULL)
-	{
-		free(list);
-		exit(98);
-	}
-	for (i = 0; i < size - 1; i++)
-		newlist[i] = list[i];
-	newlist[i] = new;
-	free(list);
-	return (newlist);
+        newlist = malloc(size * sizeof(listint_t *));
+        if (newlist == NULL)
+        {
+                free(list);
+                exit(98);
+        }
+        for (i = 0; i < size - 1; i++)
+                newlist[i] = list[i];
+        newlist[i] = new;
+        free(list);
+        return (newlist);
 }
 
 /**
+<<<<<<< HEAD
+* print_listint_safe - will print a listint_t linked list.
+* @head: pointer to  the head
+*
+* Return: the number of nodes in our list
+*/
+
+
+=======
  * free_listint_safe - frees a listint_t linked list.
  * @head: pointer to the start of the list
  *
@@ -40,28 +60,28 @@ const listint_t **_r(const listint_t **list, size_t size, const listint_t *new)
  */
 void free_listint_safe(listint_t **head)
 {
-	size_t i, num = 0;
-	const listint_t **list = NULL;
+        size_t i, num = 0;
+        const listint_t **list = NULL;
 
-	if (head == NULL || *head == NULL)
-		return;
+        if (head == NULL || *head == NULL)
+                return;
 
-	while (*head != NULL)
-	{
-		for (i = 0; i < num; i++)
-		{
-			if (*head == list[i])
-			{
-				*head = NULL;
-				free(list);
-				return;
-			}
-		}
-		num++;
-		list = _r(list, num, *head);
-		*head = (*head)->next;
-	}
-	free(list);
+        while (*head != NULL)
+        {
+                for (i = 0; i < num; i++)
+                {
+                        if (*head == list[i])
+                        {
+                                *head = NULL;
+                                free(list);
+                                return;
+                        }
+                }
+                num++;
+                list = _r(list, num, *head);
+                *head = (*head)->next;
+        }
+        free(list);
 }
 
 /**
@@ -70,32 +90,33 @@ void free_listint_safe(listint_t **head)
  *
  * Return: the number of nodes in the list
  */
+>>>>>>> refs/remotes/origin/master
 size_t print_listint_safe(const listint_t *head)
 {
-	size_t i, num = 0;
-	const listint_t **list = NULL;
+        size_t i, num = 0;
+        const listint_t **list = NULL;
 
-	if (head == NULL)
-		return (0);
+        if (head == NULL)
+                return (0);
 
-	list = _r(list, 1, head);
+        list = _r(list, 1, head);
 
-	while (head != NULL)
-	{
-		for (i = 0; i < num; i++)
-		{
-			if (head == list[i])
-			{
-				printf("-> [%p] %d\n", (void *)head, head->n);
-				free(list);
-				return (num);
-			}
-		}
-		num++;
-		list = _r(list, num + 1, head);
-		printf("[%p] %d\n", (void *)head, head->n);
-		head = head->next;
-	}
-	free(list);
-	return (num);
+        while (head != NULL)
+        {
+                for (i = 0; i < num; i++)
+                {
+                        if (head == list[i])
+                        {
+                                printf("-> [%p] %d\n", (void *)head, head->n);
+                                free(list);
+                                return (num);
+                        }
+                }
+                num++;
+                list = _r(list, num + 1, head);
+                printf("[%p] %d\n", (void *)head, head->n);
+                head = head->next;
+        }
+        free(list);
+        return (num);
 }
