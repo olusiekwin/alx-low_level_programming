@@ -1,12 +1,9 @@
 #ifndef LISTS_H
 #define LISTS_H
 
-#include <stdlib.h>
-#include <string.h>
 #include <stdio.h>
+#include <stdlib.h>
 
-#define SUCCESS 1
-#define FAIL -1
 /**
  * struct listint_s - singly linked list
  * @n: integer
