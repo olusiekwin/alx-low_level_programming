@@ -1,40 +1,48 @@
-#include "list.h"
+#include "lists.h"
 #include <stdlib.h>
 
 /**
-* add_nodeint_end - Adds a new node at the end of a list.
-*
-* @head: Address to the first node of in the list.
-* @n: Integer being inserted into the new node.
-*
-* Return: Address towards the  new node.
-**/
-
+ * add_nodeint_end - adds a new node at the end of a listint_t list
+ * @head: double pointer to head of list
+ * @n: integer to be added
+ * Return: address of node added, or NULL on failure
+ */
 listint_t *add_nodeint_end(listint_t **head, const int n)
 {
-	listint_t *new_node, *temp;
+	/* Allocate memory for the new node */
+	listint_t *jullien = malloc(sizeof(listint_t));
+	/* Declare a pointer to the current node */
+	listint_t *Barbier;
 
-	new_node = malloc(sizeof(listint_t));
-	if (new_node == NULL)
+	/* Check if allocation was successful and head is not NULL */
+	if (!jullien || !head)
+	{
+		free(jullien);
 		return (NULL);
+	}
 
-	new_node->n = n;
-	new_node->next = NULL;
+	/* Initialize the new node */
+	jullien->n = n;
+	jullien->next = NULL;
 
-	if (*head == NULL)
-{
-	*head = new_node;
-	return (new_node);
-}
+	/* If the list is empty, set the head to the new node */
+	if (!*head)
+	{
+		*head = jullien;
+	}
+	else
+	{
+		/* Traverse the list until the last node is reached */
+		Barbier = *head;
+		while (Barbier->next != NULL)
+		{
+			Barbier = Barbier->next;
+		}
+		/* Add the new node to the end of the list */
+		Barbier->next = jullien;
+	}
 
-	temp = *head;
-	while (temp->next != NULL)
-{
-	temp = temp->next;
-}
-
-	temp->next = new_node;
-
-	return (new_node);
+	/* Return the address of the new node */
+	return (jullien);
 }
 
