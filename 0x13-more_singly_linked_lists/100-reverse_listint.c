@@ -1,22 +1,32 @@
 #include "lists.h"
-
 /**
  * reverse_listint - reverses a listint_t linked list
- * @head: pointer to pointer to the head node of the list
- *
- * Return: pointer to the first node of the reversed list
+ * @head: double pointer to head
+ * Return: address of head of list
  */
 listint_t *reverse_listint(listint_t **head)
 {
-	listint_t *prev = NULL, *next;
+	listint_t *nextDest = NULL, *tmpd = NULL, *curr = *head;
 
-	while (*head != NULL)
+	if (!head || !(*head))
+		return (*head);
+
+	nextDest = curr->next;
+	curr->next = NULL;
+
+	while (next_dest)
 	{
-		next = (*head)->next;
-		(*head)->next = prev;
-		prev = *head;
-		*head = next;
+		tmpd = next_dest->next;
+		nextDest->next = curr;
+		curr = nextDest;
+		nextDest = tmpd;
 	}
+	*head = curr;
 
-	return prev;
+	return (*head);
 }
+
+/*
+*Drawing a chart and study this algo migh be helpfull
+*
+*/
