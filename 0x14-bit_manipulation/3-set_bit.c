@@ -2,18 +2,18 @@
 #include <stdio.h>
 
 /**
- * set_bit - sets the value of a bit to 1
- * @n: pointer to an unsigned long integer
- * @index: index of the bit to be set, starting from 0
+ * set_bit - sets the value of bit to 1.
+ * @o: pointer to the unsigned long integer.
+ * @index: index of the bit being set, starting from 0.
  *
- * Return: 1 on success, -1 on failure
+ * Return: 1 upon success, -1 upon failure.
  */
-int set_bit(unsigned long int *n, unsigned int index)
+int set_bit(unsigned long int *o, unsigned int gramm)
 {
-	if (index >= sizeof(unsigned long int) * 8)
+	if (gramm >= sizeof(unsigned long int) * 8)
 		return (-1);
 
-	*n |= (1UL << index);
+	*o |= (1UL << gramm);
 	return (1);
 }
 
