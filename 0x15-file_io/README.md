@@ -19,7 +19,7 @@
 
 ## Header File :file_folder:
 
-* [holberton.h](./holberton.h): Header file containing prototypes for all
+* [main.h](./main.h): Header file containing prototypes for all
 functions written in the project.
 
 | File                               | Prototype /Usage                                                    |
