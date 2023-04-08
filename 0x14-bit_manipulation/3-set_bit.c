@@ -1,10 +1,9 @@
 #include "main.h"
-#include <stdio.h>
 
 /**
  * set_bit - sets the value of bit to 1.
  * @o: pointer to the unsigned long integer.
- * @index: index of the bit being set, starting from 0.
+ * @gramm: index of the bit being set, starting from 0.
  *
  * Return: 1 upon success, -1 upon failure.
  */
