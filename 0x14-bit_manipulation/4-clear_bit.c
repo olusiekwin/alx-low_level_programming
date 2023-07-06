@@ -1,22 +1,24 @@
-#include "main.h"
 #include <stdio.h>
+#include "main.h"
 
 /**
- * clear_bit - sets the value of a bit to 0 at a given index.
- * @n: unsigned long int
- * @index: unsigned int
+ * clear_bit - prints digits
  *
- * Return: 1 if it worked and -1 if not.
+ * Description: prints digits
+ *
+ * @n: integer to print
+ * @index: index integer
+ *
+ * Return: return 1 or 0
  */
 int clear_bit(unsigned long int *n, unsigned int index)
 {
-	unsigned long int x;
-
-	x = sizeof(unsigned long int) * 8;
-	if (index >= x)
+	if (n == 0 || index > (8 * 8))
 		return (-1);
 
-	*n &= ~(1UL << index);
-
-	return (1);
+	*n &= ~(1 << index);
+	if (~*n & (1 << index))
+		return (1);
+	else
+		return (-1);
 }

@@ -1,26 +1,31 @@
-#include "main.h"
 #include <stdio.h>
+#include "main.h"
 
 /**
- * flip_bits - returns the number os bits
- * @n: unsigned long int
- * @m: unssigned long int
+ * flip_bits - prints digits
  *
- * Return: number of bytes that need to flip
+ * Description: prints digits
+ *
+ * @n: integer to print
+ * @m: index integer
+ *
+ * Return: return 1 or 0
  */
-
 unsigned int flip_bits(unsigned long int n, unsigned long int m)
 {
-	unsigned int y = 0;
-	unsigned long int res;
+	int difference;
 
-	res = n ^ m;
-
-	while (res)
+	difference = 0;
+	while (m > 0 || n > 0)
 	{
-		y += res & 1;
-		res >>= 1;
+		if ((n & 1) != (m & 1))
+		{
+			difference++;
+		}
+
+		m >>= 1;
+		n >>= 1;
 	}
 
-	return (y);
+	return (difference);
 }
