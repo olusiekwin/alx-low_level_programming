@@ -1,5 +1,6 @@
 #include "main.h"
-
+#include <stdlib.h>
+#include <unistd.h>
 
 /**
  * read_textfile - short description
@@ -42,5 +43,4 @@ ssize_t read_textfile(const char *filename, size_t letters)
 
 	fclose(file_stream);
 	return (number_of_characters_printed);
-
 }
